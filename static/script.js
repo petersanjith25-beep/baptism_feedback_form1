@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('https://baptism-feedback-form.onrender.com/api/feedback', {
+            const response = await fetch('https://baptism-feedback-form1.onrender.com/api/feedback', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
