@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baptism Feedback - A Blessed Celebration</title>
+    <!-- Google Fonts: Playfair Display for headers, Inter for UI text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="circle circle-top-left"></div>
+        <div class="circle circle-bottom-right"></div>
+    </div>
+
+    <div class="container">
+        <!-- Main Form Container -->
+        <main class="feedback-card" id="formCard">
+            <header class="feedback-header">
+                <!-- Golden Cross SVG Logo -->
+                <div class="logo-container">
+                    <svg class="cross-icon" viewBox="0 0 100 100" width="50" height="50" fill="none" stroke="url(#goldGradient)" stroke-width="4" stroke-linecap="round">
+                        <defs>
+                            <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#AA7C11" />
+                                <stop offset="50%" stop-color="#D4AF37" />
+                                <stop offset="100%" stop-color="#F3E5AB" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Vertical line -->
+                        <line x1="50" y1="10" x2="50" y2="90" />
+                        <!-- Horizontal line -->
+                        <line x1="25" y1="35" x2="75" y2="35" />
+                        <!-- Decorative center ring -->
+                        <circle cx="50" cy="35" r="8" stroke="url(#goldGradient)" stroke-width="3" fill="none"/>
+                    </svg>
+                </div>
+                <h1>Baptism Feedback</h1>
+                <p class="subtitle">Thank you for celebrating this blessed day with our family. Please share your feedback and help us remember this special day.</p>
+                <div class="divider">
+                    <span class="gold-line"></span>
+                    <span class="cross-center">&#10013;</span>
+                    <span class="gold-line"></span>
+                </div>
+            </header>
+
+            <form id="feedbackForm" novalidate>
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required autocomplete="name">
+                    <span class="error-msg" id="nameError">Please enter your name.</span>
+                </div>
+
+                <!-- Relationship Field -->
+                <div class="form-group">
+                    <label class="form-label">Relationship to Family <span class="required">*</span></label>
+                    <div class="chips-container" id="relationshipContainer">
+                        <button type="button" class="chip-btn" data-value="Relative">Relative</button>
+                        <button type="button" class="chip-btn" data-value="Friend">Friend</button>
+                        <button type="button" class="chip-btn" data-value="Church member">Church Member</button>
+                        <button type="button" class="chip-btn" data-value="Neighbor">Neighbor</button>
+                    </div>
+                    <input type="hidden" id="relationship" name="relationship" required>
+                    <span class="error-msg" id="relationshipError">Please select your relationship to the family.</span>
+                </div>
+
+                <!-- Invitation Rating (1-5 Stars) -->
+                <div class="form-group">
+                    <label class="form-label">How was the invitation experience? <span class="required">*</span></label>
+                    <div class="star-rating" id="invitationRating" data-rating="0">
+                        <button type="button" class="star-btn" data-value="1" aria-label="1 star">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="2" aria-label="2 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="3" aria-label="3 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="4" aria-label="4 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="5" aria-label="5 stars">&#9733;</button>
+                    </div>
+                    <input type="hidden" id="invitation_rating" name="invitation_rating" required>
+                    <span class="error-msg" id="invitationError">Please rate the invitation experience.</span>
+                </div>
+
+                <!-- Overall Function Rating (1-5 Stars) -->
+                <div class="form-group">
+                    <label class="form-label">How would you rate the overall function? <span class="required">*</span></label>
+                    <div class="star-rating" id="overallRating" data-rating="0">
+                        <button type="button" class="star-btn" data-value="1" aria-label="1 star">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="2" aria-label="2 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="3" aria-label="3 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="4" aria-label="4 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="5" aria-label="5 stars">&#9733;</button>
+                    </div>
+                    <input type="hidden" id="overall_rating" name="overall_rating" required>
+                    <span class="error-msg" id="overallError">Please rate the overall function.</span>
+                </div>
+
+                <!-- Food Rating (Excellent / Good / Average / Poor) -->
+                <div class="form-group">
+                    <label class="form-label">How was the food? <span class="required">*</span></label>
+                    <div class="food-options-container" id="foodContainer">
+                        <button type="button" class="food-card" data-value="Excellent">
+                            <span class="food-emoji">😋</span>
+                            <span class="food-label">Excellent</span>
+                        </button>
+                        <button type="button" class="food-card" data-value="Good">
+                            <span class="food-emoji">😊</span>
+                            <span class="food-label">Good</span>
+                        </button>
+                        <button type="button" class="food-card" data-value="Average">
+                            <span class="food-emoji">😐</span>
+                            <span class="food-label">Average</span>
+                        </button>
+                        <button type="button" class="food-card" data-value="Poor">
+                            <span class="food-emoji">☹️</span>
+                            <span class="food-label">Poor</span>
+                        </button>
+                    </div>
+                    <input type="hidden" id="food_rating" name="food_rating" required>
+                    <span class="error-msg" id="foodError">Please rate the food.</span>
+                </div>
+
+                <!-- Improvements -->
+                <div class="form-group">
+                    <label for="improvements" class="form-label">What could be improved? <span class="optional">(Optional)</span></label>
+                    <textarea id="improvements" name="improvements" class="form-control text-area" placeholder="Share your suggestions with us..." rows="4"></textarea>
+                    <div class="char-count"><span id="charNum">0</span> / 1000</div>
+                </div>
+
+                <!-- Error Box (For API Errors) -->
+                <div class="alert-box error" id="apiErrorBox" style="display: none;">
+                    <strong>Submission Failed:</strong> <span id="apiErrorMessage">An error occurred while saving your feedback. Please try again.</span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">Send Feedback</span>
+                    <div class="btn-loader" id="btnLoader" style="display: none;">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </button>
+            </form>
+        </main>
+
+        <!-- Success Message Container (Hidden initially) -->
+        <div class="success-card" id="successCard" style="display: none;">
+            <div class="success-content">
+                <div class="dove-decor">
+                    <!-- Elegant Dove SVG in gold -->
+                    <svg class="dove-icon" viewBox="0 0 100 100" width="80" height="80" fill="none" stroke="url(#goldGradientSuccess)" stroke-width="3">
+                        <defs>
+                            <linearGradient id="goldGradientSuccess" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#AA7C11" />
+                                <stop offset="50%" stop-color="#D4AF37" />
+                                <stop offset="100%" stop-color="#F3E5AB" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Stylized modern dove representing the Holy Spirit / Peace -->
+                        <path d="M50 30 C30 30 20 40 25 55 C28 65 38 70 50 68 C62 70 72 65 75 55 C80 40 70 30 50 30 Z" />
+                        <path d="M50 30 C45 20 40 10 30 15 C20 20 25 35 50 30" />
+                        <path d="M50 30 C55 20 60 10 70 15 C80 20 75 35 50 30" />
+                        <path d="M50 68 C50 78 45 88 38 90 C35 91 38 82 50 68" />
+                        <path d="M50 68 C50 78 55 88 62 90 C65 91 62 82 50 68" />
+                        <circle cx="50" cy="45" r="1.5" fill="#D4AF37"/>
+                    </svg>
+                </div>
+                <h2>Thank You!</h2>
+                <div class="divider">
+                    <span class="gold-line"></span>
+                    <span class="cross-center">&#10013;</span>
+                    <span class="gold-line"></span>
+                </div>
+                <p class="blessing-text">"The Lord bless you and keep you; the Lord make his face shine on you and be gracious to you."</p>
+                <p class="scripture-ref">Numbers 6:24-25</p>
+                <p class="success-msg">Your feedback has been saved, and our family has been notified. We truly appreciate your thoughts and blessings!</p>
+                <button type="button" class="submit-btn secondary" id="newResponseBtn">Submit Another Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script connection -->
+    <script src="/static/script.js"></script>
+</body>
+</html>

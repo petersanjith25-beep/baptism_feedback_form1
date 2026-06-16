@@ -1,0 +1,572 @@
+/* CSS Design System for Baptism Feedback Web Application */
+
+:root {
+    /* Color Palette */
+    --bg-primary: #FAF9F6;       /* Soft alabaster white background */
+    --bg-card: #ffffff;          /* Pure white card backgrounds */
+    --gold-primary: #D4AF37;     /* Elegant metallic gold */
+    --gold-dark: #B8901C;        /* Deep gold for shadow states */
+    --gold-light: #F4E7C1;       /* Light champagne gold */
+    --gold-trans: rgba(212, 175, 55, 0.08); /* Transparent gold highlight */
+    --gold-trans-heavy: rgba(212, 175, 55, 0.2); 
+    --text-primary: #2C2C2C;     /* High contrast warm charcoal for body */
+    --text-secondary: #656565;   /* Subdued text for subtitles/placeholders */
+    --border-color: #E6E2D8;     /* Warm grey border line */
+    --error-color: #A94442;      /* Elegant soft red for validation errors */
+    --error-bg: #FDF7F7;
+    
+    /* Layout & Styling properties */
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --border-radius: 16px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-premium: 0 10px 30px -5px rgba(210, 198, 175, 0.3), 
+                      0 4px 12px -2px rgba(210, 198, 175, 0.15);
+}
+
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-primary);
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Decorative Background Elements */
+.background-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.45;
+    background: radial-gradient(circle, var(--gold-light) 0%, rgba(255,255,255,0) 70%);
+}
+
+.circle-top-left {
+    width: 500px;
+    height: 500px;
+    top: -200px;
+    left: -200px;
+}
+
+.circle-bottom-right {
+    width: 600px;
+    height: 600px;
+    bottom: -250px;
+    right: -250px;
+}
+
+/* Layout Container */
+.container {
+    width: 100%;
+    max-width: 640px;
+    margin: 20px auto;
+    z-index: 10;
+}
+
+/* Premium Card Design */
+.feedback-card, .success-card {
+    background-color: var(--bg-card);
+    border-radius: var(--border-radius);
+    padding: 45px 40px;
+    box-shadow: var(--shadow-premium);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    position: relative;
+    transition: var(--transition-smooth);
+    animation: fadeInUp 0.8s ease;
+}
+
+.feedback-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--gold-dark), var(--gold-primary), var(--gold-light), var(--gold-primary), var(--gold-dark));
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+/* Header Typography & Elements */
+.feedback-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.logo-container {
+    margin-bottom: 15px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cross-icon {
+    filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.2));
+    animation: subtleFloat 4s ease-in-out infinite;
+}
+
+h1 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 85%;
+    margin: 0 auto 20px auto;
+    font-weight: 300;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.gold-line {
+    height: 1px;
+    width: 60px;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0), var(--gold-primary), rgba(212, 175, 55, 0));
+}
+
+.cross-center {
+    color: var(--gold-primary);
+    font-size: 0.9rem;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 28px;
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.92rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+.required {
+    color: #B8860B; /* Dark Goldenrod instead of classic red for elegance */
+    margin-left: 2px;
+}
+
+.optional {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.form-control {
+    width: 100%;
+    padding: 13px 16px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    border: 1.5px solid var(--border-color);
+    background-color: var(--bg-primary);
+    border-radius: 8px;
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition-smooth);
+}
+
+.form-control:focus {
+    border-color: var(--gold-primary);
+    background-color: var(--bg-card);
+    box-shadow: 0 0 0 4px var(--gold-trans);
+}
+
+.form-control::placeholder {
+    color: #A09E96;
+}
+
+.text-area {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Custom Relationship Selection (Chips) */
+.chips-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.chip-btn {
+    background-color: var(--bg-primary);
+    border: 1.5px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 10px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+.chip-btn:hover {
+    border-color: var(--gold-primary);
+    background-color: var(--gold-trans);
+}
+
+.chip-btn.selected {
+    background-color: var(--gold-primary);
+    border-color: var(--gold-primary);
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.25);
+}
+
+/* Interactive Star Rating */
+.star-rating {
+    display: inline-flex;
+    flex-direction: row-reverse; /* Allows hover highlight in preceding items */
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.star-btn {
+    background: none;
+    border: none;
+    font-size: 2.2rem;
+    color: var(--border-color);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    outline: none;
+    padding: 0;
+}
+
+/* Hover effect */
+.star-btn:hover,
+.star-btn:hover ~ .star-btn {
+    color: var(--gold-light);
+    transform: scale(1.1);
+}
+
+/* Filled active stars styling (controlled by JS through container data-rating or class) */
+.star-rating button.active {
+    color: var(--gold-primary);
+}
+
+.star-rating button.active ~ button {
+    color: var(--gold-primary);
+}
+
+/* Food Selection Cards Grid */
+.food-options-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.food-card {
+    background-color: var(--bg-primary);
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    outline: none;
+}
+
+.food-card:hover {
+    border-color: var(--gold-primary);
+    background-color: var(--gold-trans);
+    transform: translateY(-2px);
+}
+
+.food-emoji {
+    font-size: 1.6rem;
+    margin-bottom: 5px;
+}
+
+.food-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.food-card.selected {
+    background-color: var(--gold-trans);
+    border-color: var(--gold-primary);
+    box-shadow: 0 4px 10px var(--gold-trans);
+}
+
+.food-card.selected .food-label {
+    color: var(--gold-dark);
+}
+
+/* Error Validations */
+.error-msg {
+    display: none;
+    color: var(--error-color);
+    font-size: 0.8rem;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+.form-group.has-error .form-control,
+.form-group.has-error .chip-btn,
+.form-group.has-error .food-card {
+    border-color: var(--error-color);
+}
+
+.form-group.has-error .error-msg {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.char-count {
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* Error Alert Box */
+.alert-box {
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.alert-box.error {
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-color);
+    color: var(--error-color);
+}
+
+/* Premium Gold Button */
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
+    background-size: 200% auto;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 15px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    background-position: right center;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.45);
+    transform: translateY(-1px);
+}
+
+.submit-btn:active {
+    transform: translateY(1px);
+}
+
+.submit-btn.secondary {
+    background: transparent;
+    border: 1.5px solid var(--gold-primary);
+    color: var(--gold-dark);
+    box-shadow: none;
+    margin-top: 25px;
+}
+
+.submit-btn.secondary:hover {
+    background-color: var(--gold-trans);
+    box-shadow: 0 4px 10px var(--gold-trans);
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loader dots in button */
+.btn-loader {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-loader .dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    animation: loaderBounce 1.4s infinite ease-in-out both;
+}
+
+.btn-loader .dot:nth-child(1) { animation-delay: -0.32s; }
+.btn-loader .dot:nth-child(2) { animation-delay: -0.16s; }
+
+/* Success Screen Styles */
+.success-card {
+    text-align: center;
+    padding: 60px 40px;
+    animation: scaleIn 0.5s ease-out;
+}
+
+.dove-decor {
+    margin-bottom: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dove-icon {
+    filter: drop-shadow(0 4px 10px rgba(212, 175, 55, 0.25));
+    animation: floatDove 3.5s ease-in-out infinite;
+}
+
+.success-card h2 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.blessing-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-primary);
+    max-width: 85%;
+    margin: 25px auto 8px auto;
+    line-height: 1.5;
+}
+
+.scripture-ref {
+    font-size: 0.8rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 25px;
+}
+
+.success-msg {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes loaderBounce {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+@keyframes subtleFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes floatDove {
+    0% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(-1deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+/* Media Queries */
+@media (max-width: 580px) {
+    body {
+        padding: 10px;
+    }
+    
+    .feedback-card, .success-card {
+        padding: 30px 20px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .chips-container {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .food-options-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
+    .star-btn {
+        font-size: 1.8rem;
+    }
+}

@@ -1,0 +1,31 @@
+# Virtual environment
+venv/
+.venv/
+env/
+ENV/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Local database files
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Local environment variables configuration
+.env
+.env.local
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
